@@ -8,9 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src = "index.js" defer></script>
     <title>Password Generator</title>
 </head>
-<body>
+
+<body id = "body">
+
     <div class="container">
 
         <nav>
@@ -18,15 +21,17 @@
                 Password Generator
             </div>
             <div class="team-name">
-                Team 0100
+                <img src = "images/logo.png">
             </div>
         </nav>
 
         <h1>Generate A Strong And Secure Password Here</h1>
+
         <card>
-            
-            <input type="text" class="password-box"><button class="copy">Copy</button></input>
-            <div class="align"><div class="password-length" >Length</div><input type="checkbox"></div>
+            <div class = "pbox"><p class="password-box"></p></div><button class="copy">Copy</button>
+            <!-- <div class="align"><div class="password-length" >Length</div><input type="checkbox"> -->
+            <div>Length<input type="range" min= "4" max= "40" id= "characterAmountRange"></div>
+            <div><input type="number" min= "4" max= "40" id= "characterAmountNumber"></div>
             <div class="align"><div class="password-uppercase">Uppercase</div><input type="checkbox"></div>
             <div class="align"><div class="password-numbers">Numbers</div><input type="checkbox"></div>
             <div class="align"><div class="password-symbols">Symbols</div><input type="checkbox"></div>
@@ -34,6 +39,5 @@
         </card>
 
     </div>
-    
 </body>
 </html>
