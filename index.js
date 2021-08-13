@@ -1,7 +1,7 @@
 
 var parentDom = document.querySelector("body");
 var passwordBox = parentDom.querySelector(".password-box");
-console.log(passwordBox);
+//var checkBox = parentDom.querySelector("password-uppercase");
 
 //console.log(parentDom.getElementsByClassName("generate-button"));
 
@@ -89,56 +89,47 @@ parentDom.getElementsByClassName("generate-button")[0].addEventListener("click",
        
        }
        
-       //main
+       /* --------------------------------------- main --------------------------------------------*/
        
-       const password_length = 8;
-       var include_uppercase = true;
-       var include_number = true;
-       var include_special_character = true;
+       const password_length = 12;
+       var include_uppercase = false;
+       var include_number = false;
+       var include_special_character = false;
+
+       var checkBoxes = document.querySelectorAll("input[type=checkbox][name= characterTypes]");
+       let enabledCheckbox = [];
+       checkBoxes.forEach(function(checkbox){
+        checkbox.addEventListener("change", function() {
+            enabledCheckbox = 
+            Array.from(checkBoxes)
+            .filter(i => i.checked)
+            .map(i => i.value);
+            if (enabledCheckbox.includes("capitalLetters")) {
+                console.log("Elephants");
+            }
+            if (enabledCheckbox.includes("numbs")) {
+                console.log("Nachos");
+            }
+            if (enabledCheckbox.includes("specialChars")) {
+                console.log("The Vaccines");
+            }
+        })
+    });
        
-              var password = "";
+       var password = "";
        
        for (let i = 0; i < password_length; i++) {
            password = password.concat(generate_character(include_uppercase, include_number, include_special_character));
        }
        
-       console.log(password);
-       passwordBox.innerHTML = password;
-        // if (parentDom.getElementsByClassName("password-uppercase").checked) {
-        //    include_uppercase = true;
-        // }
-       
-        // if (Document.getElementsByClassName("password-numbers").checked) {
-        //     include_number = true;
-        // }
-       
-        // if (Document.getElementsByClassName("password-symbols").checked) {
-        //     include_special_character = true;
-        // }
-       
-        // if (Document.getElementsByClassName("password-uppercase").unchecked) {
-        //     include_uppercase = false;
-        // }
-       
-        // if (Document.getElementsByClassName("password-numbers").unchecked) {
-        //     include_number = false;
-        // }
-       
-        // if (Document.getElementsByClassName("password-symbols").unchecked) {
-        //     include_special_character = false;
-        // }
-       
-       /*
-       get element by id, give it a name
-       button.addEventListener("click", function listener(e) {
-           do whatever you want
-       })
-       */
-       
-       
-       
-
-       //return password;
+ 
     
-});
+           console.log(password);
+           passwordBox.innerHTML = password;
+           
+        
+    });
+//console.log(document.querySelector('#elephants').checked);
+
+
 

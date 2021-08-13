@@ -35,6 +35,7 @@ nav img{
 card {
 
     align-self: center;
+    text-align: center;
     background-color: grey; 
     padding: 3rem;
     border: 2px whitesmoke;
