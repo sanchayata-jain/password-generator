@@ -82,8 +82,35 @@ const generate_character = (include_uppercase, include_number, include_special_c
 
 const password_length = 8;
 var include_uppercase = false;
-var include_number = true;
+var include_number = false;
 var include_special_character = false;
+
+if (document.getElementsByClassName("password-uppercase").checked == true) {
+    include_uppercase = true;
+}
+
+if (document.getElementsByClassName("password-numbers").checked == true) {
+    include_number = true;
+}
+
+if (document.getElementsByClassName("password-symbols").checked == true) {
+    include_special_character = true;
+}
+
+if (document.getElementsByClassName("password-uppercase").unchecked == true) {
+    include_uppercase = false;
+}
+
+if (document.getElementsByClassName("password-numbers").unchecked == true) {
+    include_number = false;
+}
+
+if (document.getElementsByClassName("password-symbols").unchecked == true) {
+    include_special_character = false;
+}
+
+
+
 var password = "";
 
 for (let i = 0; i < password_length; i++) {
