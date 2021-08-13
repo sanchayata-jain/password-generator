@@ -1,0 +1,25 @@
+body {
+    font-family: 'Source Code Pro', monospace;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.align {
+    display: flex;
+}
+
+card {
+    align-self: center;
+    
+    margin-top: 300px;
+}
