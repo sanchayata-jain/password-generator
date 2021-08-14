@@ -12,8 +12,6 @@ class PasswordGenerator {
 }
 
 
-
-
 var passwordGenerator = new PasswordGenerator();
 
 var scrollBox = document.querySelector(".scroll-box");
