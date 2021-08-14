@@ -1,9 +1,14 @@
 
-class PasswordGeneratorOptions {
-    static include_uppercase = false; 
-    static include_number = false;
-    static include_special_character = false; 
+class PasswordGenerator {
+    constructor() {
+        var include_uppercase = false; 
+        var include_number = false;
+        var include_special_character = false; 
+        var password_length = 8;  // default password length is 8 characters long
+    }
 }
+
+var passwordGenerator = new PasswordGenerator();
 
 var parentDom = document.querySelector("body");
 var passwordBox = parentDom.querySelector(".password-box");
@@ -12,13 +17,13 @@ parentDom.getElementsByClassName("generate-button")[0].addEventListener("click",
 
 
 function generate_password() { 
-    const password_length = 12;
+    passwordGenerator.password_length = 12;
     var password = "";
 
-    for (let i = 0; i < password_length; i++) {
-        password = password.concat(generate_character(PasswordGeneratorOptions.include_uppercase,
-                                                        PasswordGeneratorOptions.include_number,
-                                                        PasswordGeneratorOptions.include_special_character));
+    for (let i = 0; i < passwordGenerator.password_length; i++) {
+        password = password.concat(generate_character(passwordGenerator.include_uppercase,
+                                                      passwordGenerator.include_number,
+                                                      passwordGenerator.include_special_character));
     }
     
     console.log(password);
@@ -113,21 +118,21 @@ checkBoxes.forEach(function(checkbox){
 
         if (enabledCheckbox.includes("capitalLetters")) {
             console.log("Capital Letters");
-            PasswordGeneratorOptions.include_uppercase = true;
+            passwordGenerator.include_uppercase = true;
         } else {
-            PasswordGeneratorOptions.include_uppercase = false;
+            passwordGenerator.include_uppercase = false;
         }
         if (enabledCheckbox.includes("numbs")) {
             console.log("Numbers");
-            PasswordGeneratorOptions.include_number = true;
+            passwordGenerator.include_number = true;
         } else {
-            PasswordGeneratorOptions.include_number = false;
+            passwordGenerator.include_number = false;
         }
         if (enabledCheckbox.includes("specialChars")) {
             console.log("Special Characters");
-            PasswordGeneratorOptions.include_special_character = true;
+            passwordGenerator.include_special_character = true;
         } else {
-            PasswordGeneratorOptions.include_special_character = false;
+            passwordGenerator.include_special_character = false;
         }
     })
 });
