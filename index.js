@@ -11,7 +11,7 @@ class PasswordGenerator {
     }
 }
 
-//i love you <3
+
 
 
 var passwordGenerator = new PasswordGenerator();
