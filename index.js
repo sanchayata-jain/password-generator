@@ -1,4 +1,7 @@
 
+window.addEventListener('load', generate_password);
+var parentDom = document.querySelector("body");
+
 class PasswordGenerator {
     constructor() {
         var include_uppercase = false; 
@@ -8,16 +11,28 @@ class PasswordGenerator {
     }
 }
 
+//i love you <3
+
+
 var passwordGenerator = new PasswordGenerator();
 
-var parentDom = document.querySelector("body");
-var passwordBox = parentDom.querySelector(".password-box");
+var scrollBox = document.querySelector(".scroll-box");
+var slider = document.getElementsByClassName("slider-range")[0];
 
+
+slider.oninput = function() {
+    scrollBox.innerHTML = this.value;
+    generate_password();
+}
+
+var passwordBox = parentDom.querySelector(".password-box");
 parentDom.getElementsByClassName("generate-button")[0].addEventListener("click", generate_password);
 
 
 function generate_password() { 
-    passwordGenerator.password_length = 12;
+    passwordGenerator.password_length = slider.value;
+    scrollBox.innerHTML = slider.value;
+
     var password = "";
 
     for (let i = 0; i < passwordGenerator.password_length; i++) {
@@ -26,7 +41,6 @@ function generate_password() {
                                                       passwordGenerator.include_special_character));
     }
     
-    console.log(password);
     passwordBox.innerHTML = password;
 }
 

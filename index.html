@@ -18,7 +18,7 @@
 
         <nav>
             <div class="title">
-                Password Generator
+                #pA5sw0rd GEnerat0r
             </div>
             <div class="team-name">
                 Team 0100
@@ -29,13 +29,25 @@
 
         <card>
             <div class="main-card">
-                <div class="box_button"><div class = "pbox"><p class="password-box"></p></div><button class="copy">Copy</button></div>
-                <!-- <div class="align"><div class="password-length" >Length</div><input type="checkbox"> -->
-                <div>Length<input type="range" min= "4" max= "40" id= "characterAmountRange"></div>
-                <div><input type="number" min= "4" max= "40" id= "characterAmountNumber"></div>
-                <div class="align">Uppercase<input type="checkbox" name="characterTypes" value="capitalLetters"></div>
-                <div class="align">Numbers<input type="checkbox" name="characterTypes" value="numbs"></div>
-                <div class="align">Symbols<input type="checkbox" name="characterTypes" value="specialChars"></div>
+                <div class="box_button">
+                    <div class = "pbox">
+                        <p class="password-box"></p>
+                    </div>
+                    <button class="copy">Copy Password</button>
+                </div>
+
+                <div class="slider-range-wrapper" id="sliderParent">
+                    <input type="range" min="4" max="64" class="slider-range" value="4">
+                    <!-- <span class="slider-range-value" id="sliderRange" style="left: 6.24664%;"></span>  -->
+                </div>
+                <div class="scroll">
+                    <p class="scroll-box"></p>
+                </div>
+                
+                <div class="check-boxes"><div class="align">Uppercase <input type="checkbox" name="characterTypes" value="capitalLetters"></div>
+                <div class="align">Numbers <input type="checkbox" name="characterTypes" value="numbs"></div>
+                <div class="align">Symbols <input type="checkbox" name="characterTypes" value="specialChars"></div></div>
+
                 <button class="generate-button">Generate Password</button>
             </div>
         </card>
