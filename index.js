@@ -31,6 +31,13 @@ function generate_password() {
 }
 
 
+function random_number_generator(max, min) {
+    var random_number = Math.random() * (max - min) + min;    
+    const random_whole_number = Math.round(random_number);
+
+    return random_whole_number;
+}
+
 function select_letter() {
     // generating random number from 0 to 25 for selecting letter from undercase and uppercase arrays
     const undercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -38,9 +45,8 @@ function select_letter() {
 
     const max = undercase.length - 1;
     const min = 0;
-    var letter_selector = Math.random() * (max - min) + min; 
-    const whole_number_letter_selector = Math.round(letter_selector)
-
+    const whole_number_letter_selector = random_number_generator(max, min);
+    
     return undercase[whole_number_letter_selector];
 }
 
@@ -48,10 +54,9 @@ function select_letter() {
 function select_number() {
     //function should only be entered if flag === 3 in the main
     //generates random number from 0 to 9 for password
-    const min = 0;
     const max = 9;
-    var number = Math.random() * (max - min) + min;    
-    const whole_number = Math.round(number);
+    const min = 0;
+    const whole_number = random_number_generator(max, min);
 
     return String(whole_number);
 }
@@ -61,10 +66,9 @@ function select_special_character() {
     const special_symbols = [',', '!', '#', '%', '.', ':', ';', '$',
                              '&', '+', '/', '-', '*', '?', '^'];
 
-    const min = 0;
     const max = special_symbols.length - 1;
-    var number = Math.random() * (max - min) + min;    
-    const whole_number = Math.round(number);
+    const min = 0;
+    const whole_number = random_number_generator(max, min);
 
     return special_symbols[whole_number];
 }

@@ -1,31 +1,33 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Source Code Pro', monospace;
-    background-image: url("images/background.jpeg"); 
+    background-image: url(/images/background-website-hd.jpg);
 }
 
 
 nav {
     display: flex;
     justify-content: space-between;
-    background-color: grey;
-    color: white;
+    background-color: #242E39;
+    color: rgb(221, 219, 219);
     height: 60%;
-    font-size: 60px;
-     
+    font-size: 40px;
     
-}
-
-nav img{
-    height: 80%;
-    width: auto;
 }
 
 .container {
-    
     display: flex;
-    
     flex-direction: column;
-    
+}
+
+.webpage-heading h1 {
+    text-align: center;
+    color: rgb(221, 219, 219);
 }
 
 .align {
@@ -33,17 +35,23 @@ nav img{
 }
 
 card {
-
-    align-self: center;
-    text-align: center;
-    background-color: grey; 
-    padding: 3rem;
-    border: 2px whitesmoke;
-    border-radius: 1rem;
+    display: flex;
     justify-content: center;
-    margin-top: 300px;
+    align-items: center;
+}
+
+card .main-card {
+    background-color: rgb(202, 202, 202);  
+    padding: 3rem;
+    border: 2px;
+    border-radius: 1rem;
+    margin-top: 10%; 
+    width: 35%;
+    text-align: center;
 }
 
 card .pbox {
     background-color: white;
+    width: 100%;
+    text-align: center;
 }
