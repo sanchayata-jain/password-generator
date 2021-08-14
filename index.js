@@ -1,15 +1,15 @@
 
 var parentDom = document.querySelector("body");
 var passwordBox = parentDom.querySelector(".password-box");
-//var checkBox = parentDom.querySelector("password-uppercase");
 
-//console.log(parentDom.getElementsByClassName("generate-button"));
+parentDom.getElementsByClassName("generate-button")[0].addEventListener("click", generate_password);
 
-parentDom.getElementsByClassName("generate-button")[0].addEventListener("click", () => {
+
+//parentDom.getElementsByClassName("generate-button")[0].addEventListener("click", () => {
        //passwordBox.innerHTML = "hi";
        //console.log("button has been clicked");
     
-    
+function generate_password() {    
        const select_letter = () => {
            // generating random number from 0 to 25 for selecting letter from undercase and uppercase arrays
            const undercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
@@ -92,44 +92,60 @@ parentDom.getElementsByClassName("generate-button")[0].addEventListener("click",
        /* --------------------------------------- main --------------------------------------------*/
        
        const password_length = 12;
-       var include_uppercase = false;
-       var include_number = false;
-       var include_special_character = false;
-
-       var checkBoxes = document.querySelectorAll("input[type=checkbox][name= characterTypes]");
-       let enabledCheckbox = [];
-       checkBoxes.forEach(function(checkbox){
-        checkbox.addEventListener("change", function() {
-            enabledCheckbox = 
-            Array.from(checkBoxes)
-            .filter(i => i.checked)
-            .map(i => i.value);
-            if (enabledCheckbox.includes("capitalLetters")) {
-                console.log("Elephants");
-            }
-            if (enabledCheckbox.includes("numbs")) {
-                console.log("Nachos");
-            }
-            if (enabledCheckbox.includes("specialChars")) {
-                console.log("The Vaccines");
-            }
-        })
-    });
+       
+    // });
        
        var password = "";
-       
        for (let i = 0; i < password_length; i++) {
-           password = password.concat(generate_character(include_uppercase, include_number, include_special_character));
+           password = password.concat(generate_character(PasswordGeneratorOptions.include_uppercase,
+                                                         PasswordGeneratorOptions.include_number,
+                                                         PasswordGeneratorOptions.include_special_character));
        }
-       
- 
     
            console.log(password);
            passwordBox.innerHTML = password;
            
         
-    });
-//console.log(document.querySelector('#elephants').checked);
+    
+
+}
+
+class PasswordGeneratorOptions {
+    static include_uppercase = false; //
+    static include_number = false;
+    static include_special_character = false; 
+}
+
+
+var checkBoxes = document.querySelectorAll("input[type=checkbox][name= characterTypes]");
+let enabledCheckbox = [];
+checkBoxes.forEach(function(checkbox){
+checkbox.addEventListener("change", function() {
+    enabledCheckbox = 
+    Array.from(checkBoxes)
+    .filter(i => i.checked)
+    .map(i => i.value);
+
+    if (enabledCheckbox.includes("capitalLetters")) {
+        console.log("Capital Letters");
+        PasswordGeneratorOptions.include_uppercase = true;
+    } else {
+        PasswordGeneratorOptions.include_uppercase = false;
+    }
+    if (enabledCheckbox.includes("numbs")) {
+        console.log("Numbers");
+        PasswordGeneratorOptions.include_number = true;
+    } else {
+        PasswordGeneratorOptions.include_number = false;
+    }
+    if (enabledCheckbox.includes("specialChars")) {
+        console.log("Special Characters");
+        PasswordGeneratorOptions.include_special_character = true;
+    } else {
+        PasswordGeneratorOptions.include_special_character = false;
+    }
+})
+});
 
 
 
