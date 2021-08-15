@@ -1,5 +1,5 @@
 
-window.addEventListener('load', generate_password);
+window.addEventListener('load', generate_password); //generates a password when page first loads
 var parentDom = document.querySelector("body");
 
 class PasswordGenerator {
@@ -8,24 +8,23 @@ class PasswordGenerator {
         var include_number = false;
         var include_special_character = false; 
         var password_length = 8;  // default password length is 8 characters long
+        var password = "";
     }
 }
-
 
 var passwordGenerator = new PasswordGenerator();
 
 var scrollBox = document.querySelector(".scroll-box");
 var slider = document.getElementsByClassName("slider-range")[0];
 
-
 slider.oninput = function() {
-    scrollBox.innerHTML = this.value;
+    scrollBox.innerHTML = this.value; 
     generate_password();
 }
 
+
 var passwordBox = parentDom.querySelector(".password-box");
 parentDom.getElementsByClassName("generate-button")[0].addEventListener("click", generate_password);
-
 
 function generate_password() { 
     passwordGenerator.password_length = slider.value;
@@ -38,9 +37,29 @@ function generate_password() {
                                                       passwordGenerator.include_number,
                                                       passwordGenerator.include_special_character));
     }
+    passwordGenerator.password = password;
+
+    if (passwordGenerator.password_length > 18) {
+        // var size = 35 - Math.pow((passwordGenerator.password_length - 18), (35+18-passwordGenerator.password_length))* Math.pow((passwordGenerator.password_length/4 - 18), (1-(64 - passwordGenerator.password_length)));
+        var size = 12 + (64 / passwordGenerator.password_length);
+        var stringSize = `${size}px`;
+        console.log(stringSize);
+        parentDom.getElementsByClassName("password-box")[0].style.fontSize = stringSize;
+    } else {
+        parentDom.getElementsByClassName("password-box")[0].style.fontSize = "35px";
+    }
     
-    passwordBox.innerHTML = password;
+    passwordBox.innerHTML = passwordGenerator.password;
 }
+
+// navigator.clipboard.readText().then(
+//     clipText => parentDom.querySelector(".password-box").innerText += clipText);
+
+// parentDom.getElementsByClassName("copy")[0].addEventListener("click", copyPassword);
+
+// function copyPassword() {
+//     passwordBox.innerHTML
+// }
 
 
 function random_number_generator(max, min) {
